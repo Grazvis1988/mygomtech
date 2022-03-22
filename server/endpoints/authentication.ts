@@ -28,7 +28,7 @@ router.get('/api/login',timeout, (req, res) => {
     return;
   }
 
-  res.status(401).send();
+    res.status(401).send();
 });
 
 // deletes token

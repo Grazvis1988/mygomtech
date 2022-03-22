@@ -5,6 +5,8 @@ import login from '~/services/login';
 import ErrorBlock from '../ErrorBlock';
 import * as yup from 'yup';
 import YupPassword from 'yup-password';
+import Spinner from '../../components/Spinner'
+import { trackPromise } from 'react-promise-tracker';
 
 YupPassword(yup); // extend yup
 
@@ -42,7 +44,7 @@ console.log('Login');
           setTimeout(() => setPasswordIsValid(''), 6500);
         }
       } finally {
-        await login(username, password);
+        await trackPromise(login(username, password));
         push(Routes.Users);
       }
     } catch (error) {
@@ -74,6 +76,7 @@ console.log('Login');
         />
         <div className="credentials-error">{passwordIsValid}</div>
         <ErrorBlock  error={errorMessage}/>
+        <Spinner />
         <button type="submit" className="button mt-24px">
           Login
         </button>
