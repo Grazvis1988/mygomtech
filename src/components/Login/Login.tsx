@@ -7,6 +7,7 @@ import ErrorBlock from '../ErrorBlock';
 import './login-style.scss';
 
 const Login = () => {
+console.log('Login');
   const {push} = useHistory();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');

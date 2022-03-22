@@ -11,6 +11,7 @@ import itemHasReusedPassword from "~/utils/itemHasReusedPassword";
 import { useUserContext } from '../UserContext';
 
 const UsersManagement = () => {
+console.log('UsersManagement');
   const {
     errorMessage: userProviderErrorMessage,
     isLoading: userDataIsLoading,
