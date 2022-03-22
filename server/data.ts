@@ -9,7 +9,7 @@ export const users = [
     id: "00001",
     username: "admin",
     email: "user@organization.com",
-    password: "admin"
+    password: "Gau1234."
   }
 ];
 

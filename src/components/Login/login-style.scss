@@ -16,5 +16,22 @@
     padding: 50px;
     width: 350px;
     height: 400px;
+
+    .credentials-error {
+      display: flex;
+      margin-top: 5px;
+      font-size: 12px;
+      background-color: #EBE7E7;
+      color: #FF364E;
+      border-radius: 2px;
+      justify-content: left;
+      align-items: left;
+    }
+    .error-block {
+      display: flex;
+      padding-top: 10px;
+      font-size: 15px;
+      justify-content: flex-end;
+    }
   }
 }
