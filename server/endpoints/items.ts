@@ -13,6 +13,7 @@ router.get('/api/items', authentication, (req, res) => {
 router.post('/api/items', authentication, (req, res) => {
   const { id, name, role, email } = req.body;
 
+  console.log(id, name, role, email );
   if (!id || !name || !role || !email) {
     res.status(400).send('mandatory parameter is missing');
     return;
