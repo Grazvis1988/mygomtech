@@ -1,15 +1,15 @@
 import List from './components/List/List';
-import useItemsProvider from './useItemsProvider';
 import ErrorBlock from '../ErrorBlock';
 import Filter from './components/Filter/Filter';
 import LoadingScreen from '../LoadingScreen';
 import Header from './components/Header/Header';
 import {Route, Switch} from "react-router-dom";
 import {Routes} from '~/constants';
-import itemHasWeakPassword from "~/utils/itemHasWeakPassword";
+import itemHasWrongEmail from "~/utils/itemHasWrongEmail"
 import itemHasReusedPassword from "~/utils/itemHasReusedPassword";
 import itemIsOlderThan30Days from "~/utils/itemIsOlderThan30Days";
 import { useUserContext } from '../UserContext';
+import { useItemsContext } from '../ItemsContext';
 
 const UsersManagement = () => {
 console.log('UsersManagement');
@@ -21,9 +21,9 @@ console.log('UsersManagement');
 
   const {
     items,
-    isLoading,
     errorMessage,
-  } = useItemsProvider();
+    isLoading,
+  } = useItemsContext();
 
   if (isLoading || userDataIsLoading) {
     return <LoadingScreen/>
@@ -32,6 +32,7 @@ console.log('UsersManagement');
   if (userProviderErrorMessage || errorMessage) {
     return <ErrorBlock error={userProviderErrorMessage || errorMessage}/>
   }
+  
 
   return (
     <div className="container">
@@ -41,8 +42,8 @@ console.log('UsersManagement');
         <Route exact path={Routes.Users}>
           <List items={items}/>
         </Route>
-        <Route path={Routes.Weak}>
-          <List items={items}/>
+        <Route path={Routes.Wrong}>
+        <List items={items.filter((item) => !itemHasWrongEmail(item))}/>
         </Route>
         <Route path={Routes.Reused}>
           <List items={items.filter((item) => itemHasReusedPassword(item, items))}/>

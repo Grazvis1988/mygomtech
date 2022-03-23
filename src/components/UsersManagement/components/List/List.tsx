@@ -3,6 +3,7 @@ import {IItem} from "~/services/getUserItems";
 import ItemIcon from './components/ItemIcon';
 import updateItem from '../../../../services/updateItem';
 import Modal from 'react-modal';
+import { useItemsContext } from '~/components/ItemsContext';
 
 import './list-style.scss';
 
@@ -12,12 +13,13 @@ interface IList {
 
 interface IUpdateModal {
   item: IItem;
-  setEmail: React.Dispatch<React.SetStateAction<string>>
 }
 
-const UpdateModal: FC<IUpdateModal> = ({ item, setEmail }) => {
+const UpdateModal: FC<IUpdateModal> = ({ item }) => {
   const [showModal, setShowModal] = useState(false);
   const [newEmail, setNewEmail] = useState('');
+  
+  const { updateItems } = useItemsContext();
 
   return (
     <>
@@ -43,8 +45,11 @@ const UpdateModal: FC<IUpdateModal> = ({ item, setEmail }) => {
             await updateItem({
               ...item,
               email: newEmail,
-            })
-            setEmail(newEmail);
+              }).then(() => updateItems({
+              ...item,
+              email: newEmail
+                  }));
+
             setShowModal(false);
             // window.location.reload();
           }}>Change</button>
@@ -60,7 +65,6 @@ const UpdateModal: FC<IUpdateModal> = ({ item, setEmail }) => {
 }
 
 const ListItem = ({item}) => {
-  const [email, setEmail] = useState(item.email);
   return (
         <li className="item">
           <ItemIcon name={item.name}/>
@@ -69,10 +73,10 @@ const ListItem = ({item}) => {
               {item.name}
             </div>
             <div className="description">
-              {email}
+              {item.email}
             </div>
           </div>
-          <UpdateModal item={item} setEmail={setEmail} />
+          <UpdateModal item={item}/>
         </li>
       )
 }
