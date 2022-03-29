@@ -10,6 +10,9 @@
     "start": "run-p start:*"
   },
   "dependencies": {
+    "@testing-library/jest-dom": "^5.16.2",
+    "@testing-library/react": "^12.1.4",
+    "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^26.0.20",
     "@types/react": "^17.0.41",
     "@types/react-dom": "^17.0.0",
@@ -27,6 +30,7 @@
     "react-modal": "^3.12.1",
     "react-promise-tracker": "^2.1.0",
     "react-router-dom": "^5.2.0",
+    "react-test-renderer": "^17.0.2",
     "sass": "^1.32.0",
     "sass-loader": "^10.1.0",
     "style-loader": "^2.0.0",
@@ -44,6 +48,7 @@
     "dotenv-webpack": "^6.0.0",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^4.5.1",
+    "identity-obj-proxy": "^3.0.0",
     "npm-run-all": "^4.1.5",
     "ts-loader": "^8.0.14",
     "webpack": "^5.11.1",

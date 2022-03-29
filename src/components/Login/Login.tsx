@@ -1,7 +1,7 @@
-import {SyntheticEvent, useState} from 'react';
+import {SyntheticEvent, useState, useEffect} from 'react';
 import {useHistory} from 'react-router-dom';
-import {Routes} from '~/constants';
-import login from '~/services/login';
+import {Routes} from '../../constants';
+//import login from '../../services/login';
 import ErrorBlock from '../ErrorBlock';
 import * as yup from 'yup';
 import YupPassword from 'yup-password';
@@ -12,14 +12,13 @@ YupPassword(yup); // extend yup
 
 import './login-style.scss';
 
-const Login = () => {
-console.log('Login');
+const Login = ({ onLogin }) => {
   const {push} = useHistory();
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState<string>();
-  const [usernameIsValid, setUsernameIsValid] = useState('');
-  const [passwordIsValid, setPasswordIsValid] = useState('');
+  const [username, setUsername] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [errorMessage, setErrorMessage] = useState<string>('');
+  const [usernameIsValid, setUsernameIsValid] = useState<string>('');
+  const [passwordIsValid, setPasswordIsValid] = useState<string>('');
 
 
   const passwordSchema = yup.string().password().required()
@@ -41,17 +40,23 @@ console.log('Login');
           await passwordSchema.validate(password);
         } catch {
           setPasswordIsValid('Min 8 characters, at least 1 uppercase letter, at least 1 number and at least one symbol. "Password: Gau1234. \"');
-          setTimeout(() => setPasswordIsValid(''), 6500);
+            setTimeout(() => setPasswordIsValid(''), 6500);
         }
       } finally {
-        await trackPromise(login(username, password));
+        await trackPromise(onLogin(username, password));
         push(Routes.Users);
       }
     } catch (error) {
-        console.error(error.message)
+        //console.error(error.message)
         setErrorMessage("Wrong credentials");
     }
   };
+
+  useEffect(() => {
+      return () => {
+        setErrorMessage('')
+      }
+      })
 
   return (
     <div className="login-page">

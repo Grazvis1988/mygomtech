@@ -7,6 +7,7 @@ import PublicRoute from './components/PublicRoute';
 import {Routes} from './constants';
 import { UserContextProvider } from './components/UserContext';
 import { ItemsContextProvider } from './components/ItemsContext';
+import login from './services/login';
 
 import './style/styles.scss';
 
@@ -15,7 +16,7 @@ const App = () => (
     <Switch>
       <PublicRoute
         path={Routes.Login}
-        component={Login}
+        component={() => <Login onLogin={login}/>}
       />
       <PrivateRoute
         path={Routes.Users}

@@ -25,7 +25,6 @@ const UserContext = createContext<IUser>({
 export const useUserContext = () => useContext(UserContext);
 
 export const UserContextProvider = ({ children }) => {
-console.log("UserContextProvider");
   const [errorMessage, setErrorMessage] = useState<string>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [username, setUsername] = useState<string>(null);

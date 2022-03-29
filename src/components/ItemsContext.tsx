@@ -17,7 +17,6 @@ const ItemsContext = createContext<IItems>({
 export const useItemsContext = () => useContext(ItemsContext);
 
 export const ItemsContextProvider = ({ children }) => {
-  console.log("ItemsContextProvider");
   const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState<string>();
   const [items, setItems] = useState<Array<IItem>>([])

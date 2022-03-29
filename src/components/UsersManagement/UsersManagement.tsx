@@ -12,7 +12,6 @@ import { useUserContext } from '../UserContext';
 import { useItemsContext } from '../ItemsContext';
 
 const UsersManagement = () => {
-console.log('UsersManagement');
   const {
     errorMessage: userProviderErrorMessage,
     isLoading: userDataIsLoading,
