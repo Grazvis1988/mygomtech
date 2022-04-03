@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from 'react';
-import getUserItems, {IItem} from '~/services/getUserItems';
+import getUserItems, {IItem} from '../services/getUserItems';
 
 interface IItems {
   updateItems: (item: IItem) => void,

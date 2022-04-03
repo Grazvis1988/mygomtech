@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from 'react';
-import { API } from '~/constants';
-import getUrl from '~/utils/getUrl';
+import { API } from '../constants';
+import getUrl from '../utils/getUrl';
 
 interface IUser {
   updateUser: () => void;

@@ -1,10 +1,10 @@
 import { FC } from 'react';
-import { Routes } from "~/constants";
-import { IItem } from "~/services/getUserItems";
+import { Routes } from "../../../../constants";
+import { IItem } from "../../../../services/getUserItems";
 import FilterTab from "./components/FilterTab"
-import itemIsOlderThan30Days from "~/utils/itemIsOlderThan30Days";
-import itemHasReusedPassword from "~/utils/itemHasReusedPassword";
-import itemHasWrongEmail from "~/utils/itemHasWrongEmail";
+import itemIsOlderThan30Days from "../../../../utils/itemIsOlderThan30Days";
+import itemHasReusedPassword from "../../../../utils/itemHasReusedPassword";
+import itemHasWrongEmail from "../../../../utils/itemHasWrongEmail";
 
 import './filter-style.scss';
 
