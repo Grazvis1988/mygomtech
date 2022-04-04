@@ -1,7 +1,9 @@
 import UpdateModal from './UpdateModal'
 import ItemIcon from './ItemIcon'
+import {FC} from 'react';
+import {IItem} from '../../../../../services/getUserItems'
 
-const ListItem = ({item}) => {
+const ListItem: FC<{item: IItem}> = ({item}) => {
   return (
         <li data-testid="listItem" className="item">
           <ItemIcon data-testid='icon' name={item.name}/>

@@ -1,7 +1,6 @@
-import {SyntheticEvent, useState, useEffect} from 'react';
+import {SyntheticEvent, useState, useEffect, FC} from 'react';
 import {useHistory} from 'react-router-dom';
 import {Routes} from '../../constants';
-//import login from '../../services/login';
 import ErrorBlock from '../ErrorBlock';
 import * as yup from 'yup';
 import YupPassword from 'yup-password';
@@ -12,7 +11,11 @@ YupPassword(yup); // extend yup
 
 import './login-style.scss';
 
-const Login = ({ onLogin }) => {
+interface ILogin {
+  onLogin: (username:string, password:string) => Promise<void>
+}
+
+const Login: FC<ILogin> = ({ onLogin }) => {
   const {push} = useHistory();
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');

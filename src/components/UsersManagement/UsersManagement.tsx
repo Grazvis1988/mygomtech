@@ -1,3 +1,4 @@
+import {FC} from 'react'
 import List from './components/List/List';
 import ErrorBlock from '../ErrorBlock';
 import Filter from './components/Filter/Filter';
@@ -12,7 +13,7 @@ import { useUserContext } from '../UserContext';
 import { useItemsContext } from '../ItemsContext';
 import logout from '../../services/logout';
 
-const UsersManagement = () => {
+const UsersManagement: FC = () => {
   const {
     errorMessage: userProviderErrorMessage,
     isLoading: userDataIsLoading,

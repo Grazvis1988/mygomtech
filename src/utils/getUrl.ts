@@ -1,7 +1,7 @@
 import qs from 'query-string';
 import { API } from '../constants';
 
-const getUrl = (endpoint: API, params?: Record<string, any>) => {
+const getUrl = (endpoint: API, params?: Record<string, any>): string => {
 
   const query = qs.stringify(params);
 

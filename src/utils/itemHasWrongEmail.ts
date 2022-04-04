@@ -10,7 +10,7 @@ const itemHasWrongEmail = async (item: IItem) => {
   return isValid
 };
 */;
-const itemHasWrongEmail = (item: IItem) => {
+const itemHasWrongEmail = (item: IItem): RegExpMatchArray => {
   return String(item.email)
     .toLowerCase()
     .match(
