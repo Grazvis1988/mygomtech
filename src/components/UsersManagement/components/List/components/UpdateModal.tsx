@@ -1,8 +1,8 @@
-import { FC, useState } from 'react';
-import { useItemsContext } from '../../../../../components/ItemsContext';
-import updateItem from '../../../../../services/updateItem';
+import { FC, useState } from "react";
+import { useItemsContext } from "../../../../../components/ItemsContext";
+import updateItem from "../../../../../services/updateItem";
 import {IItem} from "../../../../..//services/getUserItems";
-import Modal from 'react-modal';
+import Modal from "react-modal";
 
 interface IUpdateModal {
   item: IItem;
@@ -10,7 +10,7 @@ interface IUpdateModal {
 
 const UpdateModal: FC<IUpdateModal> = ({ item }) => {
   const [showModal, setShowModal] = useState(false);
-  const [newEmail, setNewEmail] = useState('');
+  const [newEmail, setNewEmail] = useState("");
   
   const { updateItems } = useItemsContext();
 
@@ -48,7 +48,7 @@ const UpdateModal: FC<IUpdateModal> = ({ item }) => {
             // window.location.reload();
           }}>Change</button>
           <button className="button ml-12px" onClick={() => {
-            setShowModal(false)
+            setShowModal(false);
           }}>
             Cancel
           </button>
@@ -56,6 +56,6 @@ const UpdateModal: FC<IUpdateModal> = ({ item }) => {
       </Modal>
     </>
   );
-}
+};
 
 export default UpdateModal;

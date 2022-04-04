@@ -1,5 +1,5 @@
-import {FC} from 'react';
-import {useHistory} from 'react-router-dom';
+import {FC} from "react";
+import {useHistory} from "react-router-dom";
 
 interface IFilterTab {
   title: string;
@@ -19,6 +19,6 @@ const FilterTab: FC<IFilterTab> = ({
       {`${title} (${count})`}
     </div>
   );
-}
+};
 
-export default FilterTab
+export default FilterTab;

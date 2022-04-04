@@ -1,12 +1,12 @@
-import { Router } from 'express';
-import timeout from '../middleware/timeout';
-import { users } from '../data';
-import { addToken, removeToken, getTokenOwner, generateToken } from '../services/tokenManager';
+import { Router } from "express";
+import timeout from "../middleware/timeout";
+import { users } from "../data";
+import { addToken, removeToken, getTokenOwner, generateToken } from "../services/tokenManager";
 
 const router = Router();
 
 // if password and email is correct returns new token
-router.get('/api/login',timeout, (req, res) => {
+router.get("/api/login",timeout, (req, res) => {
   const {username, password} = req.query;
 
   const user = users.find((user) => (
@@ -23,17 +23,17 @@ router.get('/api/login',timeout, (req, res) => {
       id: user.id,
       email: user.email,
       token,
-    })
+    });
 
     return;
   }
 
-    res.status(401).send();
+  res.status(401).send();
 });
 
 // deletes token
-router.get('/api/logout', (req, res) => {
-  const token = req.headers.authorization?.split(' ')?.[1];
+router.get("/api/logout", (req, res) => {
+  const token = req.headers.authorization?.split(" ")?.[1];
 
   if (token) {
     removeToken(token);
@@ -45,8 +45,8 @@ router.get('/api/logout', (req, res) => {
 });
 
 // return token owner info
-router.get('/api/user', (req, res) => {
-  const token = req.headers.authorization?.split(' ')?.[1];
+router.get("/api/user", (req, res) => {
+  const token = req.headers.authorization?.split(" ")?.[1];
 
   if (token) {
     const tokenOwnerId = getTokenOwner(token);

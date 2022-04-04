@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC } from "react";
 const LoadingScreen: FC = () => (
   <div className="loading-screen">
     Loading...

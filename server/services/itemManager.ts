@@ -1,6 +1,6 @@
-import { employees } from '../data';
+import { employees } from "../data";
 
-let items = [];
+const items = [];
 
 export const updateItem = (item) => {
   items.push(item);
@@ -13,7 +13,7 @@ export const getItems = () => {
     return {
       ...(updatedItem || userItem),
     };
-  })
+  });
 };
 
 

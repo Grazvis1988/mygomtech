@@ -1,8 +1,8 @@
-import {FC} from 'react';
+import {FC} from "react";
 import {IItem} from "~/services/getUserItems";
-import ListItem from "./components/ListItem"
+import ListItem from "./components/ListItem";
 
-import './list-style.scss';
+import "./list-style.scss";
 
 interface IList {
   items: Array<IItem>,
@@ -16,6 +16,6 @@ const List: FC<IList> = ({items}) => (
       ))
     }
   </ul>
-)
+);
 
 export default List;

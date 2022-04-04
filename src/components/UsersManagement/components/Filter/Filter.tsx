@@ -1,12 +1,12 @@
-import { FC } from 'react';
+import { FC } from "react";
 import { Routes } from "../../../../constants";
 import { IItem } from "../../../../services/getUserItems";
-import FilterTab from "./components/FilterTab"
+import FilterTab from "./components/FilterTab";
 import itemIsOlderThan30Days from "../../../../utils/itemIsOlderThan30Days";
 import itemHasReusedPassword from "../../../../utils/itemHasReusedPassword";
 import itemHasWrongEmail from "../../../../utils/itemHasWrongEmail";
 
-import './filter-style.scss';
+import "./filter-style.scss";
 
 interface IFilter {
   items: Array<IItem>;
@@ -14,10 +14,10 @@ interface IFilter {
 
 const Filter: FC<IFilter> = ({items}) => {
 
-  const wrongEmailsCount = items.filter(item => !itemHasWrongEmail(item)).length
+  const wrongEmailsCount = items.filter(item => !itemHasWrongEmail(item)).length;
 
   const reusedItemsCount = items
-    .filter((item) => itemHasReusedPassword(item, items)).length
+    .filter((item) => itemHasReusedPassword(item, items)).length;
 
   const oldItemsCount = items.filter(item => itemIsOlderThan30Days(item)).length;
 

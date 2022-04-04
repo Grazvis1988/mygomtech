@@ -1,5 +1,5 @@
-import {API} from '../constants';
-import getUrl from '../utils/getUrl';
+import {API} from "../constants";
+import getUrl from "../utils/getUrl";
 
 const login = async (username: string, password: string): Promise<void> => {
   const url = getUrl(API.Login, {
@@ -11,7 +11,7 @@ const login = async (username: string, password: string): Promise<void> => {
   const data = await response.json();
   const { token } = data;
 
-  localStorage.setItem('token', token);
+  localStorage.setItem("token", token);
 };
 
 export default login;

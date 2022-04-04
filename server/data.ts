@@ -1,7 +1,7 @@
 enum Roles {
-  read = 'read',
-  write = 'write',
-  amin = 'amin'
+  read = "read",
+  write = "write",
+  amin = "amin"
 }
 
 export const users = [

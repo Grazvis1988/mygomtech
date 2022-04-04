@@ -1,6 +1,6 @@
-import { createContext, useContext, useEffect, useState } from 'react';
-import { API } from '../constants';
-import getUrl from '../utils/getUrl';
+import { createContext, useContext, useEffect, useState } from "react";
+import { API } from "../constants";
+import getUrl from "../utils/getUrl";
 
 interface IUser {
   updateUser: () => Promise<void>;
@@ -38,7 +38,7 @@ export const UserContextProvider = ({ children }) => {
     try {
       const response = await fetch(getUrl(API.User), {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem('token')}`,
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
         }
       });
 
@@ -52,7 +52,7 @@ export const UserContextProvider = ({ children }) => {
     }
 
     setIsLoading(false);
-  }
+  };
 
 
   const deleteData = () => {
@@ -64,7 +64,7 @@ export const UserContextProvider = ({ children }) => {
   };
 
   useEffect(() => {
-   updateUser();
+    updateUser();
   }, []);
 
   const value = {
@@ -81,7 +81,7 @@ export const UserContextProvider = ({ children }) => {
     <UserContext.Provider value={value}>
       {children}
     </UserContext.Provider>
-  )
-}
+  );
+};
 
 export default UserContext;

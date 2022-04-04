@@ -1,17 +1,17 @@
-import {FC} from 'react'
-import List from './components/List/List';
-import ErrorBlock from '../ErrorBlock';
-import Filter from './components/Filter/Filter';
-import LoadingScreen from '../LoadingScreen';
-import Header from './components/Header/Header';
+import {FC} from "react";
+import List from "./components/List/List";
+import ErrorBlock from "../ErrorBlock";
+import Filter from "./components/Filter/Filter";
+import LoadingScreen from "../LoadingScreen";
+import Header from "./components/Header/Header";
 import {Route, Switch} from "react-router-dom";
-import {Routes} from '~/constants';
-import itemHasWrongEmail from "~/utils/itemHasWrongEmail"
+import {Routes} from "~/constants";
+import itemHasWrongEmail from "~/utils/itemHasWrongEmail";
 import itemHasReusedPassword from "~/utils/itemHasReusedPassword";
 import itemIsOlderThan30Days from "~/utils/itemIsOlderThan30Days";
-import { useUserContext } from '../UserContext';
-import { useItemsContext } from '../ItemsContext';
-import logout from '../../services/logout';
+import { useUserContext } from "../UserContext";
+import { useItemsContext } from "../ItemsContext";
+import logout from "../../services/logout";
 
 const UsersManagement: FC = () => {
   const {
@@ -27,11 +27,11 @@ const UsersManagement: FC = () => {
   } = useItemsContext();
 
   if (isLoading || userDataIsLoading) {
-    return <LoadingScreen/>
+    return <LoadingScreen/>;
   }
 
   if (userProviderErrorMessage || errorMessage) {
-    return <ErrorBlock error={userProviderErrorMessage || errorMessage}/>
+    return <ErrorBlock error={userProviderErrorMessage || errorMessage}/>;
   }
   
 
@@ -44,7 +44,7 @@ const UsersManagement: FC = () => {
           <List items={items}/>
         </Route>
         <Route path={Routes.Wrong}>
-        <List items={items.filter((item) => !itemHasWrongEmail(item))}/>
+          <List items={items.filter((item) => !itemHasWrongEmail(item))}/>
         </Route>
         <Route path={Routes.Reused}>
           <List items={items.filter((item) => itemHasReusedPassword(item, items))}/>
