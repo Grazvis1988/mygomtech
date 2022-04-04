@@ -1,7 +1,7 @@
 import { FC, useState } from 'react';
-import { useItemsContext } from '~/components/ItemsContext';
+import { useItemsContext } from '../../../../../components/ItemsContext';
 import updateItem from '../../../../../services/updateItem';
-import {IItem} from "~/services/getUserItems";
+import {IItem} from "../../../../..//services/getUserItems";
 import Modal from 'react-modal';
 
 interface IUpdateModal {
@@ -16,7 +16,7 @@ const UpdateModal: FC<IUpdateModal> = ({ item }) => {
 
   return (
     <>
-      <button className="update" onClick={() => setShowModal(true)}>
+      <button data-testid="openModal" className="update" onClick={() => setShowModal(true)}>
         Update Email
       </button>
       <Modal
@@ -26,8 +26,9 @@ const UpdateModal: FC<IUpdateModal> = ({ item }) => {
         onRequestClose={() => setShowModal(false)}
         contentLabel="Example Modal"
       >
-        <h1>Update Email</h1>
+        <h1 data-testid="modalInside" >Update Email</h1>
         <input
+          data-testid="modalInput"
           placeholder="new email"
           className="input"
           value={newEmail}
@@ -38,10 +39,10 @@ const UpdateModal: FC<IUpdateModal> = ({ item }) => {
             await updateItem({
               ...item,
               email: newEmail,
-              }).then(() => updateItems({
+            }).then(() => updateItems({
               ...item,
               email: newEmail
-                  }));
+            }));
 
             setShowModal(false);
             // window.location.reload();

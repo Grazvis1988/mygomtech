@@ -13,3 +13,10 @@ export enum API {
   Items = 'api/items',
   User = 'api/user',
 }
+
+export enum Roles {
+  read = 'read',
+  write = 'write',
+  amin = 'amin'
+}
+

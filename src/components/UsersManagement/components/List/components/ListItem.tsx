@@ -3,8 +3,8 @@ import ItemIcon from './ItemIcon'
 
 const ListItem = ({item}) => {
   return (
-        <li className="item">
-          <ItemIcon name={item.name}/>
+        <li data-testid="listItem" className="item">
+          <ItemIcon data-testid='icon' name={item.name}/>
           <div>
             <div className="title">
               {item.name}

@@ -1,11 +1,6 @@
 import {API} from "../constants";
 import getUrl from "../utils/getUrl";
-
-export enum Roles {
-  read = 'read',
-  write = 'write',
-  amin = 'amin'
-}
+import { Roles } from "../constants"
 
 export interface IItem {
   id: string,

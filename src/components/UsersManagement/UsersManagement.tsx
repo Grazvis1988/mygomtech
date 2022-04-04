@@ -10,6 +10,7 @@ import itemHasReusedPassword from "~/utils/itemHasReusedPassword";
 import itemIsOlderThan30Days from "~/utils/itemIsOlderThan30Days";
 import { useUserContext } from '../UserContext';
 import { useItemsContext } from '../ItemsContext';
+import logout from '../../services/logout';
 
 const UsersManagement = () => {
   const {
@@ -35,7 +36,7 @@ const UsersManagement = () => {
 
   return (
     <div className="container">
-      <Header items={items} username={username} />
+      <Header username={username} onLogout={logout}/>
       <Filter items={items}/>
       <Switch>
         <Route exact path={Routes.Users}>
