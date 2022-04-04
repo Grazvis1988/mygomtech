@@ -3,7 +3,7 @@ import { API } from '../constants';
 import getUrl from '../utils/getUrl';
 
 interface IUser {
-  updateUser: () => void;
+  updateUser: () => Promise<void>;
   deleteData: () => void;
   errorMessage: string;
   isLoading: boolean;
@@ -13,7 +13,7 @@ interface IUser {
 }
 
 const UserContext = createContext<IUser>({
-  updateUser: () => {},
+  updateUser: async () => {},
   deleteData: () => {},
   errorMessage: null,
   isLoading: true,
@@ -26,7 +26,7 @@ export const useUserContext = () => useContext(UserContext);
 
 export const UserContextProvider = ({ children }) => {
   const [errorMessage, setErrorMessage] = useState<string>(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [username, setUsername] = useState<string>(null);
   const [email, setEmail] = useState<string>(null);
   const [id, setId] = useState<string>(null);
@@ -53,6 +53,7 @@ export const UserContextProvider = ({ children }) => {
 
     setIsLoading(false);
   }
+
 
   const deleteData = () => {
     setErrorMessage(null);
